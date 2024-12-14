@@ -124,8 +124,8 @@
                 localStorage.setItem("tokens", tokens);
                 actualizarTokens();
 
-                // Abrir el enlace
-                window.location.href = enlaceAnuncio; 
+                // Abrir el enlace en una nueva pestaña
+                window.open(enlaceAnuncio, '_blank'); 
             }, 5000);
         }
 
