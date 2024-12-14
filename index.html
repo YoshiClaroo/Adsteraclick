@@ -61,21 +61,6 @@
             background-color: #e0f0ff;
             color: black;
         }
-        .alert-box {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            border: 2px solid #007bff;
-            padding: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            z-index: 1000;
-        }
     </style>
 </head>
 <body>
@@ -100,40 +85,24 @@
         <button>INFO</button>
     </div>
 
-    <!-- Alerta personalizada -->
-    <div id="alertBox" class="alert-box">
-        Verificando enlace...
-    </div>
-
     <script>
         let tokens = localStorage.getItem("tokens") ? parseInt(localStorage.getItem("tokens")) : 0;
-        const enlaceAnuncio = "https://sowpoint.com/nw2x0jk64?key=399b088964c2bd7a1b4398ae7fd96653";
-
-        function actualizarTokens() {
-            document.getElementById("tokens").innerText = tokens;
-        }
+        const enlaceAnuncio = "https://sowpoint.com/ug0i3zjb?key=5f9ccabbd099c0fac8115db2e6f6a356";
+        
+        // Actualiza el contador de tokens en la página
+        document.getElementById("tokens").innerText = tokens;
 
         function verAnuncio() {
-            // Mostrar la alerta
-            const alertBox = document.getElementById("alertBox");
-            alertBox.style.display = "block";
-
-            // Esperar 5 segundos y abrir el enlace
-            setTimeout(() => {
-                tokens += 10; // Sumar tokens
-                localStorage.setItem("tokens", tokens);
-                actualizarTokens();
-
-                // Abrir el enlace en una nueva pestaña
-                window.open(enlaceAnuncio, '_blank'); 
-            }, 5000);
+            // Abre el enlace en una nueva pestaña
+            window.open(enlaceAnuncio, "_blank");
+            tokens += 10; // Agregar 10 tokens
+            localStorage.setItem("tokens", tokens); // Guardar tokens en localStorage
+            document.getElementById("tokens").innerText = tokens; // Actualizar el contador
         }
 
         function compartir() {
-            alert("¡Comparte este sitio con tus amigos!");
+            alert("Función de compartir aún no implementada.");
         }
-
-        window.onload = actualizarTokens;
     </script>
 </body>
 </html>
