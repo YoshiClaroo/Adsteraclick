@@ -1,108 +1,128 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ad Network</title>
+    <title>Anuncios</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: black; /* Fondo negro */
+            color: white; /* Texto blanco */
+            align-items: center; /* Centra el contenido horizontalmente */
         }
-        .header {
-            background-color: #007bff;
-            color: white;
-            padding: 15px;
-            font-size: 20px;
-            font-weight: bold;
+        .ad-container {
+            text-align: center;
+            padding: 10px 0;
+            background-color: black;
         }
-        .container {
-            margin: 20px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .token-box {
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #e0f0ff;
-            color: #007bff;
-            font-size: 18px;
-            border-radius: 5px;
-        }
-        button {
-            display: block;
-            width: 80%;
-            margin: 10px auto;
-            padding: 15px;
+        .blue-button {
+            margin: 10px 0;
+            padding: 10px 20px;
             font-size: 16px;
-            font-weight: bold;
             color: white;
+            background-color: blue;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            text-align: center;
         }
-        .btn-blue { background-color: #007bff; }
-        .btn-green { background-color: #28a745; }
-        .btn-orange { background-color: #ff9800; }
-        .btn-darkblue { background-color: #0056b3; }
-        .footer {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-        .footer button {
-            width: auto;
-            background-color: #e0f0ff;
-            color: black;
+        .blue-button:hover {
+            background-color: darkblue;
         }
     </style>
 </head>
 <body>
-    <div class="header">SOCIO DE RED DE ANUNCIOS: ADSTERRA</div>
-    <div class="container">
-        <h1>¡Mira Anuncios y Gana Recompensas!</h1>
-        <div class="token-box">
-            Tokens: <span id="tokens">0</span>
-        </div>
-        <div>DESARROLLADO POR Md Hasibul</div>
-
-        <!-- Botones de Anuncios -->
-        <button class="btn-blue" onclick="verAnuncio()">Anuncio 1</button>
-        <button class="btn-green" onclick="verAnuncio()">Anuncio 2</button>
-        <button class="btn-orange" onclick="verAnuncio()">Anuncio 3</button>
-        <button class="btn-darkblue" onclick="compartir()">Compartir</button>
+    <!-- Nuevo anuncio social -->
+    <div class="ad-container">
+        <script type='text/javascript' src='//sowpoint.com/f8/fa/35/f8fa35c1c7d85581cfaf9614f05c1f81.js'></script>
     </div>
 
-    <div class="footer">
-        <button>INICIO</button>
-        <button>RETIRAR</button>
-        <button>INFO</button>
+    <!-- Nuevo banner cuadrado en la parte superior -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'b4b806a0cd5f9b9fa868f58399f01097',
+                'format' : 'iframe',
+                'height' : 300,
+                'width' : 160,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//sowpoint.com/b4b806a0cd5f9b9fa868f58399f01097/invoke.js"></script>
     </div>
 
-    <script>
-        let tokens = localStorage.getItem("tokens") ? parseInt(localStorage.getItem("tokens")) : 0;
-        const enlaceAnuncio = "https://sowpoint.com/ug0i3zjb?key=5f9ccabbd099c0fac8115db2e6f6a356";
-        
-        // Actualiza el contador de tokens en la página
-        document.getElementById("tokens").innerText = tokens;
+    <!-- Primer botón debajo del primer banner -->
+    <button class="blue-button" onclick="window.location.href='https://sowpoint.com/nw2x0jk64?key=399b088964c2bd7a1b4398ae7fd96653'">Ver anuncio</button>
 
-        function verAnuncio() {
-            // Abre el enlace en una nueva pestaña
-            window.open(enlaceAnuncio, "_blank");
-            tokens += 10; // Agregar 10 tokens
-            localStorage.setItem("tokens", tokens); // Guardar tokens en localStorage
-            document.getElementById("tokens").innerText = tokens; // Actualizar el contador
-        }
+    <!-- Nuevo banner debajo del botón -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'a12e50188961632a101e5b27c0400338',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//sowpoint.com/a12e50188961632a101e5b27c0400338/invoke.js"></script>
+    </div>
 
-        function compartir() {
-            alert("Función de compartir aún no implementada.");
-        }
-    </script>
+    <!-- Segundo botón debajo del nuevo banner -->
+    <button class="blue-button" onclick="window.location.href='https://sowpoint.com/nw2x0jk64?key=399b088964c2bd7a1b4398ae7fd96653'">Ver anuncio</button>
+
+    <!-- Nuevo anuncio de banner nativo debajo del segundo botón -->
+    <div class="ad-container">
+        <script async="async" data-cfasync="false" src="//sowpoint.com/44be19a2af3c54cf26ca27c68f9176d3/invoke.js"></script>
+        <div id="container-44be19a2af3c54cf26ca27c68f9176d3"></div>
+    </div>
+
+    <!-- Primer banner -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '330058517df469464a69070c1f06c30f',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//sowpoint.com/330058517df469464a69070c1f06c30f/invoke.js"></script>
+    </div>
+
+    <!-- Segundo banner -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '46ec84e00bacacdd716821f83a96297a',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//sowpoint.com/46ec84e00bacacdd716821f83a96297a/invoke.js"></script>
+    </div>
+
+    <!-- Tercer banner -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '573ea452e8033a21a82b24fa2b51b803',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//sowpoint.com/573ea452e8033a21a82b24fa2b51b803/invoke.js"></script>
+    </div>
 </body>
 </html>
