@@ -125,4 +125,155 @@
         <script type="text/javascript" src="//sowpoint.com/573ea452e8033a21a82b24fa2b51b803/invoke.js"></script>
     </div>
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncios</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: black; /* Fondo negro */
+            color: white; /* Texto blanco */
+            align-items: center; /* Centra el contenido horizontalmente */
+        }
+        .ad-container {
+            text-align: center;
+            padding: 10px 0;
+            background-color: black;
+        }
+        .blue-button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: blue;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .blue-button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- Nuevo anuncio social -->
+    <div class="ad-container">
+        <script type='text/javascript' src='//sowpoint.com/f8/fa/35/f8fa35c1c7d85581cfaf9614f05c1f81.js'></script>
+    </div>
+
+    <!-- Nuevo banner cuadrado en la parte superior -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'b4b806a0cd5f9b9fa868f58399f01097',
+                'format' : 'iframe',
+                'height' : 300,
+                'width' : 160,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//sowpoint.com/b4b806a0cd5f9b9fa868f58399f01097/invoke.js"></script>
+    </div>
+
+    <!-- Primer botón debajo del primer banner -->
+    <button class="blue-button" onclick="window.location.href='https://sowpoint.com/nw2x0jk64?key=399b088964c2bd7a1b4398ae7fd96653'">Ver anuncio</button>
+
+    <!-- Nuevo banner debajo del botón -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'a12e50188961632a101e5b27c0400338',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//sowpoint.com/a12e50188961632a101e5b27c0400338/invoke.js"></script>
+    </div>
+
+    <!-- Segundo botón debajo del nuevo banner -->
+    <button class="blue-button" onclick="window.location.href='https://sowpoint.com/nw2x0jk64?key=399b088964c2bd7a1b4398ae7fd96653'">Ver anuncio</button>
+
+    <!-- Nuevo anuncio de banner nativo debajo del segundo botón -->
+    <div class="ad-container">
+        <script async="async" data-cfasync="false" src="//sowpoint.com/44be19a2af3c54cf26ca27c68f9176d3/invoke.js"></script>
+        <div id="container-44be19a2af3c54cf26ca27c68f9176d3"></div>
+    </div>
+
+    <!-- Primer banner -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '330058517df469464a69070c1f06c30f',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//sowpoint.com/330058517df469464a69070c1f06c30f/invoke.js"></script>
+    </div>
+
+    <!-- Segundo banner -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '46ec84e00bacacdd716821f83a96297a',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//sowpoint.com/46ec84e00bacacdd716821f83a96297a/invoke.js"></script>
+    </div>
+
+    <!-- Tercer banner -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '573ea452e8033a21a82b24fa2b51b803',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//sowpoint.com/573ea452e8033a21a82b24fa2b51b803/invoke.js"></script>
+    </div>
+
+    <!-- Código de Adsterra -->
+    <script>
+        // URL de Adsterra
+        const adsterraUrl = "https://sowpoint.com/nw2x0jk64?key=399b088964c2bd7a1b4398ae7fd96653";
+
+        // Función para abrir el popunder hasta un máximo de dos veces por sesión
+        function openAdsterraPopunder() {
+            // Obtener el número de veces que se ha abierto el popunder en esta sesión
+            let popunderCount = parseInt(sessionStorage.getItem("adsterraPopunderCount")) || 0;
+
+            // Verificar si el popunder se ha abierto menos de dos veces
+            if (popunderCount < 2) {
+                window.open(adsterraUrl, "_blank", "noopener,noreferrer");
+
+                // Incrementar el contador y guardarlo en sessionStorage
+                popunderCount++;
+                sessionStorage.setItem("adsterraPopunderCount", popunderCount);
+            }
+        }
+
+        // Evento para activar el popunder al hacer clic en cualquier parte de la página
+        document.addEventListener("click", openAdsterraPopunder);
+    </script>
+</body>
 </html>
