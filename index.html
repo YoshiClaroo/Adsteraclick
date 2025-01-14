@@ -3,75 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descarga el Mega Pack</title>
+    <title>Apertura Aleatoria de URL</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-image: url('https://i.postimg.cc/8zmTRVNC/Pica-enhance-20241224155404-1.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: Arial, sans-serif;
-            color: white;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             height: 100vh;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
             text-align: center;
         }
-        .descripcion {
-            font-size: 18px;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 3px black;
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
-        .boton {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background-color: #ff4500;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            text-shadow: 1px 1px 3px black;
+
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
         }
-        .boton:hover {
-            background-color: #e63e00;
+
+        #contador {
+            font-size: 5em;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
         }
-        .banner {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 0;
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.8);
         }
     </style>
+    <script>
+        // Array de URLs de AdsTerra
+        const urls = [
+            "https://poawooptugroo.com/4/6925881", // Reemplaza con tu URL 1
+            "https://poawooptugroo.com/4/6925934", // Reemplaza con tu URL 2
+            "https://poawooptugroo.com/4/6925918", // Reemplaza con tu URL 3
+            "https://poawooptugroo.com/4/6931348"  // Reemplaza con tu URL 4
+        ];
+
+        let contador = 20; // Tiempo en segundos
+
+        function abrirUrlAleatoria() {
+            const urlAleatoria = urls[Math.floor(Math.random() * urls.length)];
+            window.open(urlAleatoria, "_blank"); // Abre la URL en una nueva pestaña
+            contador = 20; // Reinicia el contador
+        }
+
+        function iniciarContador() {
+            const contadorElement = document.getElementById("contador");
+            const intervalo = setInterval(() => {
+                contador--;
+                contadorElement.textContent = contador; // Actualiza el contador en la pantalla
+
+                if (contador <= 0) {
+                    abrirUrlAleatoria(); // Abre la URL al llegar a 0
+                    contadorElement.textContent = contador; // Muestra 0 en el contador
+                    clearInterval(intervalo); // Detiene el intervalo
+                    setTimeout(iniciarContador, 1000); // Reinicia el contador después de 1 segundo
+                }
+            }, 1000);
+        }
+
+        window.onload = iniciarContador; // Inicia el contador al cargar la página
+    </script>
 </head>
 <body>
-    <div class="descripcion">
-        Descarga el mega pack video borrado por telegram 😈🔥<br>
-        ¡No te lo pierdas!
-    </div>
-    <a href="https://sowpoint.com/nw2x0jk64?key=399b088964c2bd7a1b4398ae7fd96653" class="boton">Descargar Ahora</a>
-    
-    <!-- Banner -->
-    <div class="banner">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '330058517df469464a69070c1f06c30f',
-                'format' : 'iframe',
-                'height' : 60,
-                'width' : 468,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//sowpoint.com/330058517df469464a69070c1f06c30f/invoke.js"></script>
-    </div>
-    
-    <!-- Nuevo Script -->
-    <script type='text/javascript' src='//sowpoint.com/c6/93/f9/c693f9bc6728a1873008dc0bcfeebf1d.js'></script>
+    <h1>Apertura Aleatoria de URL</h1>
+    <p>Contador: <span id="contador">20</span> segundos</p>
+    <div class="footer">Desarrollado por [Tu Nombre]</div>
 </body>
 </html>
