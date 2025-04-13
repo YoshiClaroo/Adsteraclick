@@ -3,85 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apertura Aleatoria de URL</title>
+    <title>Pruebas de Publicidad</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        
+        .ad-container {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .ad-title {
+            font-size: 18px;
+            color: #3498db;
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .ad-space {
+            min-height: 250px;
+            background-color: #f5f5f5;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #ffffff;
-            font-family: 'Arial', sans-serif;
+            margin: 15px 0;
+            border: 1px dashed #ccc;
+        }
+        
+        .ad-space p {
+            color: #95a5a6;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #95a5a6;
+            font-size: 14px;
+        }
+        
+        /* Estilos para el popup */
+        #popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        #popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 340px;
+            height: 290px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        #countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin: 10px 0;
+        }
+        
+        #close-popup {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        #close-popup:hover {
+            background-color: #2980b9;
+        }
+        
+        .main-content {
+            display: none; /* Ocultamos el contenido principal inicialmente */
+        }
+        
+        .social-bar {
+            margin: 20px 0;
             text-align: center;
         }
-
-        h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
-
-        p {
-            font-size: 1.5em;
-            margin: 20px 0;
-        }
-
-        #contador {
-            font-size: 5em;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.8em;
-            color: rgba(255, 255, 255, 0.8);
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .ad-container {
+                padding: 15px;
+            }
+            
+            #popup-content {
+                width: 90%;
+                max-width: 340px;
+                height: auto;
+                padding: 15px;
+            }
+            
+            .ad-space {
+                min-height: auto;
+                padding: 15px 0;
+            }
         }
     </style>
-    <script>
-        // Array de URLs de AdsTerra
-        const urls = [
-            "https://poawooptugroo.com/4/6925881", // Reemplaza con tu URL 1
-            "https://poawooptugroo.com/4/6925934", // Reemplaza con tu URL 2
-            "https://poawooptugroo.com/4/6925918", // Reemplaza con tu URL 3
-            "https://poawooptugroo.com/4/6931348"  // Reemplaza con tu URL 4
-        ];
-
-        let contador = 20; // Tiempo en segundos
-
-        function abrirUrlAleatoria() {
-            const urlAleatoria = urls[Math.floor(Math.random() * urls.length)];
-            window.open(urlAleatoria, "_blank"); // Abre la URL en una nueva pestaña
-            contador = 20; // Reinicia el contador
-        }
-
-        function iniciarContador() {
-            const contadorElement = document.getElementById("contador");
-            const intervalo = setInterval(() => {
-                contador--;
-                contadorElement.textContent = contador; // Actualiza el contador en la pantalla
-
-                if (contador <= 0) {
-                    abrirUrlAleatoria(); // Abre la URL al llegar a 0
-                    contadorElement.textContent = contador; // Muestra 0 en el contador
-                    clearInterval(intervalo); // Detiene el intervalo
-                    setTimeout(iniciarContador, 1000); // Reinicia el contador después de 1 segundo
-                }
-            }, 1000);
-        }
-
-        window.onload = iniciarContador; // Inicia el contador al cargar la página
-    </script>
 </head>
 <body>
-    <h1>Apertura Aleatoria de URL</h1>
-    <p>Contador: <span id="contador">20</span> segundos</p>
-    <div class="footer">Desarrollado por [Tu Nombre]</div>
+    <!-- Popup de espera con banner 250x300 -->
+    <div id="popup-overlay">
+        <div id="popup-content">
+            <h3>Por favor espere</h3>
+            <div class="ad-space" style="height: 250px; width: 300px; margin: 0 auto;">
+                <!-- Banner 250x300 -->
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'af959296cfa30fd80aa71c6af9a1e783',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/af959296cfa30fd80aa71c6af9a1e783/invoke.js"></script>
+            </div>
+            <div id="countdown">10</div>
+            <p>Redireccionando al contenido...</p>
+            <button id="close-popup" style="display: none;">Continuar</button>
+        </div>
+    </div>
+    
+    <!-- Contenido principal (oculto inicialmente) -->
+    <div class="main-content">
+        <header>
+            <h1>Pruebas de Redes Publicitarias</h1>
+            <p class="description">Página de pruebas para comparar rendimiento de diferentes redes de anuncios</p>
+        </header>
+        
+        <!-- Barra social -->
+        <div class="social-bar">
+            <script type='text/javascript' src='//pl26365864.profitableratecpm.com/cd/dd/c5/cdddc503a42f900eb7d7275237e96cb4.js'></script>
+        </div>
+        
+        <main>
+            <!-- Primer banner 728x90 -->
+            <div class="ad-container">
+                <h2 class="ad-title">Banner Superior</h2>
+                <div class="ad-space" style="min-height: 90px;">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '5a6492804709f48b558f0da1d2a5bc0f',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/5a6492804709f48b558f0da1d2a5bc0f/invoke.js"></script>
+                </div>
+            </div>
+            
+            <!-- Primer banner 250x300 -->
+            <div class="ad-container">
+                <h2 class="ad-title">Contenido Intermedio</h2>
+                <div class="ad-space" style="height: 250px; width: 300px; margin: 0 auto;">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'af959296cfa30fd80aa71c6af9a1e783',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/af959296cfa30fd80aa71c6af9a1e783/invoke.js"></script>
+                </div>
+            </div>
+            
+            <!-- Segundo banner 728x90 -->
+            <div class="ad-container">
+                <h2 class="ad-title">Contenido Secundario</h2>
+                <div class="ad-space" style="min-height: 90px;">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '5a6492804709f48b558f0da1d2a5bc0f',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/5a6492804709f48b558f0da1d2a5bc0f/invoke.js"></script>
+                </div>
+            </div>
+            
+            <!-- Popunder (simulado) -->
+            <div class="ad-container">
+                <h2 class="ad-title">Popunder</h2>
+                <div class="ad-space" style="min-height: 100px;">
+                    <p>Espacio para código Popunder (se ejecutará al cargar)</p>
+                    <!-- Aquí iría el código popunder de Adsterra -->
+                </div>
+            </div>
+            
+            <!-- Segundo banner 250x300 -->
+            <div class="ad-container">
+                <h2 class="ad-title">Contenido Final</h2>
+                <div class="ad-space" style="height: 250px; width: 300px; margin: 0 auto;">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'af959296cfa30fd80aa71c6af9a1e783',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/af959296cfa30fd80aa71c6af9a1e783/invoke.js"></script>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Página de pruebas - © 2023</p>
+        </footer>
+    </div>
+
+    <script>
+        // Contador regresivo
+        let seconds = 10;
+        const countdownElement = document.getElementById('countdown');
+        const popupOverlay = document.getElementById('popup-overlay');
+        const mainContent = document.querySelector('.main-content');
+        const closeButton = document.getElementById('close-popup');
+        
+        function updateCountdown() {
+            countdownElement.textContent = seconds;
+            seconds--;
+            
+            if (seconds < 0) {
+                // Ocultar popup y mostrar contenido principal
+                popupOverlay.style.display = 'none';
+                mainContent.style.display = 'block';
+                
+                // Aquí puedes agregar código para cargar otros anuncios después de que se muestre el contenido
+            } else {
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+        
+        // Iniciar el contador cuando se carga la página
+        window.onload = function() {
+            updateCountdown();
+            
+            // Permitir cerrar manualmente después de 3 segundos
+            setTimeout(() => {
+                closeButton.style.display = 'block';
+            }, 3000);
+            
+            closeButton.addEventListener('click', function() {
+                popupOverlay.style.display = 'none';
+                mainContent.style.display = 'block';
+            });
+        };
+    </script>
 </body>
-</html>
+    </html>
