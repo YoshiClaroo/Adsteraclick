@@ -3,24 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔮 Generador de Mensajes Secretos | Monetizado</title>
+    <title>🔮 Generador de Mensajes Secretos</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Kanit:wght@300;600&display=swap" rel="stylesheet">
-    <meta property="og:title" content="Descubre mensajes secretos sobre tu crush 🔐">
-    <meta property="og:image" content="https://i.imgur.com/XYz9v0l.png">
     <style>
         :root {
             --neon-pink: #ff2a6d;
             --neon-blue: #05d9e8;
             --neon-purple: #d300c5;
             --dark-space: #0d0221;
-            --deep-space: #261447;
         }
 
         body {
             background: var(--dark-space);
-            background-image: 
-                radial-gradient(circle at 10% 20%, var(--neon-purple) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, var(--neon-blue) 0%, transparent 20%);
             color: white;
             font-family: 'Kanit', sans-serif;
             margin: 0;
@@ -29,192 +23,104 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
         }
 
         .container {
-            background: rgba(13, 2, 33, 0.8);
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--neon-blue);
-            border-radius: 20px;
-            box-shadow: 0 0 30px var(--neon-purple), 
-                        inset 0 0 20px rgba(5, 217, 232, 0.3);
-            width: 90%;
-            max-width: 600px;
-            padding: 30px;
-            text-align: center;
-            animation: glow 3s infinite alternate;
-        }
-
-        @keyframes glow {
-            from { box-shadow: 0 0 30px var(--neon-purple); }
-            to { box-shadow: 0 0 50px var(--neon-pink); }
+            max-width: 400px;
+            width: 100%;
         }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
         }
 
         .subtitle {
             color: var(--neon-pink);
             margin-bottom: 30px;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         input {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid var(--neon-blue);
-            border-radius: 50px;
-            padding: 15px 20px;
+            border-radius: 5px;
+            padding: 12px 15px;
             width: 80%;
             color: white;
             font-size: 1rem;
-            margin: 10px 0;
-            transition: all 0.3s;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--neon-pink);
-            box-shadow: 0 0 15px var(--neon-pink);
+            margin: 8px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         button {
             background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
             border: none;
-            border-radius: 50px;
-            padding: 15px 40px;
+            border-radius: 5px;
+            padding: 12px 30px;
             color: white;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
-            margin: 10px 5px;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px var(--neon-purple);
+            margin: 15px 0;
+            width: 80%;
+            letter-spacing: 1px;
         }
 
         #resultado {
             background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid var(--neon-blue);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            font-size: 1.3rem;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 1s;
-            position: relative;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .btn-copiar {
-            background: var(--neon-blue) !important;
-            padding: 8px 15px !important;
-            font-size: 0.9rem !important;
-            display: inline-block !important;
-            margin-top: 10px !important;
+            border-left: 3px solid var(--neon-blue);
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            width: 80%;
+            min-height: 80px;
         }
 
         .smartlink {
-            display: block;
-            margin: 15px auto 0;
-            color: var(--neon-pink);
-            font-weight: bold;
+            color: var(--neon-blue);
             text-decoration: none;
-            font-size: 1.1rem;
-        }
-
-        .social-share {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--deep-space);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .social-icon:hover {
-            transform: scale(1.2);
-            background: var(--neon-pink);
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
         }
 
         footer {
-            margin-top: 40px;
+            margin-top: 30px;
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        .tooltip {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--neon-blue);
-            color: var(--dark-space);
-            padding: 5px 10px;
-            border-radius: 5px;
             font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip.show {
-            opacity: 1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>GENERADOR DE MENSAJES CIFRADOS</h1>
-        <p class="subtitle">¡30+ mensajes secretos esperando ser revelados! ✨</p>
+        <h1>DE<br>MENSAJES<br>CIFRADOS</h1>
+        <p class="subtitle">30+ mensajes secretos esperando ser revelados! ✨</p>
         
-        <input type="text" id="tuNombre" placeholder="Tu nombre">
-        <input type="text" id="suNombre" placeholder="Nombre de esa persona especial">
+        <input type="text" id="tuNombre" placeholder="Tu nombre" value="Nicolas">
+        <input type="text" id="suNombre" placeholder="Su nombre" value="Maria">
         
         <button onclick="generarMensaje()">DESCIFRAR MENSAJE</button>
         
         <div id="resultado">
-            <p>¡Tu mensaje aparecerá aquí! 🔮</p>
-            <div class="tooltip" id="tooltip">¡Copiado!</div>
+            <!-- Mensaje aparecerá aquí -->
         </div>
 
-        <div class="social-share">
-            <a href="#" class="social-icon">📱</a>
-            <a href="#" class="social-icon">💬</a>
-            <a href="#" class="social-icon">📧</a>
-        </div>
+        <a href="https://otieu.com/4/9347218" target="_blank" class="smartlink">Descubre cómo descifrarlo por completo</a>
 
         <footer>
-            © 2023 Mensajes Cifrados | Diviértete responsablemente
+            © 2025 Mensajes Cifrados | Diviértete responsablemente
         </footer>
     </div>
 
     <script>
-        // 30+ Mensajes cifrados
         const mensajes = [
             "💖 {tuNombre}, {suNombre} piensa en ti un 85% más que los demás...",
             "🔮 {suNombre} guarda un secreto sobre {tuNombre}. ¡Descúbrelo!",
@@ -239,65 +145,25 @@
             "🌠 {suNombre} guarda un objeto personal de {tuNombre}.",
             "💞 {tuNombre} y {suNombre} tienen almas gemelas según el tarot.",
             "🔎 {suNombre} investigó el perfil de {tuNombre} esta semana.",
-            "💘 {tuNombre}, {suNombre} tiene una playlist inspirada en ti.",
-            "🌙 {suNombre} ve a {tuNombre} de manera diferente desde hace un mes.",
-            "🎯 {tuNombre}, alguien oculta sus sentimientos por ti.",
-            "💭 {suNombre} piensa en {tuNombre} más de lo que admite.",
-            "🔮 {tuNombre}, revisa tus chats antiguos con {suNombre}.",
-            "💞 {suNombre} guarda fotos de {tuNombre} en su dispositivo.",
-            "✨ {tuNombre} y {suNombre} están conectados por un hilo invisible."
+            "💘 {tuNombre}, {suNombre} tiene una playlist inspirada en ti."
         ];
 
         function generarMensaje() {
             const tuNombre = document.getElementById('tuNombre').value || 'Anónimo';
             const suNombre = document.getElementById('suNombre').value || 'Anónimo';
 
-            // Animación de carga
-            document.getElementById('resultado').innerHTML = '<p>🔮 Descifrando...</p>';
+            const mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
+            const mensajeFinal = mensajeAleatorio
+                .replace(/{tuNombre}/g, tuNombre)
+                .replace(/{suNombre}/g, suNombre);
 
-            // Delay para efecto dramático
-            setTimeout(() => {
-                const mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
-                const mensajeFinal = mensajeAleatorio
-                    .replace(/{tuNombre}/g, `<span style="color: var(--neon-pink)">${tuNombre}</span>`)
-                    .replace(/{suNombre}/g, `<span style="color: var(--neon-blue)">${suNombre}</span>`);
-                
-                // Smartlink de Monetag (DirectLink proporcionado)
-                const smartlink = '<a href="https://otieu.com/4/9347218" target="_blank" class="smartlink">✨ Descubre cómo descifrarlo por completo</a>';
-                
-                // Botón para copiar
-                const botonCopiar = '<button class="btn-copiar" onclick="copiarMensaje()">📋 Copiar Mensaje</button>';
-                
-                document.getElementById('resultado').innerHTML = `
-                    <div>${mensajeFinal}</div>
-                    ${botonCopiar}
-                    ${smartlink}
-                    <div class="tooltip" id="tooltip">¡Copiado!</div>
-                `;
-            }, 1500);
+            document.getElementById('resultado').innerHTML = mensajeFinal;
         }
 
-        function copiarMensaje() {
-            const mensaje = document.getElementById('resultado').firstChild.textContent;
-            navigator.clipboard.writeText(mensaje)
-                .then(() => {
-                    const tooltip = document.getElementById('tooltip');
-                    tooltip.classList.add('show');
-                    setTimeout(() => tooltip.classList.remove('show'), 2000);
-                });
-        }
-
-        // Opcional: Compartir en redes
-        function compartirFacebook() {
-            FB.ui({
-                method: 'share',
-                href: window.location.href,
-                quote: '¡Acabo de generar un mensaje cifrado! ¿Qué dirá el tuyo? 🔐'
-            });
-        }
+        // Generar mensaje al cargar la página (opcional)
+        window.onload = function() {
+            generarMensaje();
+        };
     </script>
-
-    <!-- SDK Facebook (para compartir) -->
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v12.0"></script>
 </body>
-    </html>
+</html>
