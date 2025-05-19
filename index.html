@@ -3,319 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pruebas de Publicidad</title>
+    <title>🔮 Generador de Mensajes Secretos | Monetizado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Kanit:wght@300;600&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Descubre mensajes secretos sobre tu crush 🔐">
+    <meta property="og:image" content="https://i.imgur.com/XYz9v0l.png">
     <style>
+        :root {
+            --neon-pink: #ff2a6d;
+            --neon-blue: #05d9e8;
+            --neon-purple: #d300c5;
+            --dark-space: #0d0221;
+            --deep-space: #261447;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-        
-        .description {
-            color: #7f8c8d;
-            font-size: 14px;
-        }
-        
-        .ad-container {
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .ad-title {
-            font-size: 16px;
-            color: #3498db;
-            margin-top: 0;
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 1px dashed #eee;
-        }
-        
-        .ad-space {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 10px 0;
-            overflow: hidden;
-        }
-        
-        /* Estilos para el popup */
-        #popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        #popup-content {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            width: 340px;
-            height: 290px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        #countdown {
-            font-size: 24px;
-            font-weight: bold;
-            color: #e74c3c;
-            margin: 10px 0;
-        }
-        
-        #close-popup {
-            background-color: #3498db;
+            background: var(--dark-space);
+            background-image: 
+                radial-gradient(circle at 10% 20%, var(--neon-purple) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, var(--neon-blue) 0%, transparent 20%);
             color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        
-        #close-popup:hover {
-            background-color: #2980b9;
-        }
-        
-        .main-content {
-            display: none;
-        }
-        
-        .social-bar {
-            margin: 15px 0;
+
+        .container {
+            background: rgba(13, 2, 33, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--neon-blue);
+            border-radius: 20px;
+            box-shadow: 0 0 30px var(--neon-purple), 
+                        inset 0 0 20px rgba(5, 217, 232, 0.3);
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
             text-align: center;
+            animation: glow 3s infinite alternate;
         }
-        
-        /* Estilos específicos para móviles */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            .ad-container {
-                padding: 10px;
-                margin-bottom: 10px;
-            }
-            
-            #popup-content {
-                width: 90%;
-                max-width: 340px;
-                height: auto;
-                padding: 10px;
-            }
-            
-            .banner-728x90 {
-                width: 100%;
-                min-height: 90px;
-            }
-            
-            .banner-250x300 {
-                width: 300px;
-                height: 250px;
-                margin: 0 auto;
-            }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 30px var(--neon-purple); }
+            to { box-shadow: 0 0 50px var(--neon-pink); }
         }
-        
-        /* Estilos para desktop */
-        @media (min-width: 769px) {
-            .banner-728x90 {
-                width: 728px;
-                height: 90px;
-                margin: 0 auto;
-            }
-            
-            .banner-250x300 {
-                width: 300px;
-                height: 250px;
-                margin: 0 auto;
-            }
-            
-            .ad-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
-                margin-bottom: 15px;
-            }
-            
-            .ad-grid .ad-container {
-                margin-bottom: 0;
-            }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--neon-pink);
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+
+        input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            border-radius: 50px;
+            padding: 15px 20px;
+            width: 80%;
+            color: white;
+            font-size: 1rem;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        button {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--neon-purple);
+        }
+
+        #resultado {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--neon-blue);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1s;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-copiar {
+            background: var(--neon-blue) !important;
+            padding: 8px 15px !important;
+            font-size: 0.9rem !important;
+            display: inline-block !important;
+            margin-top: 10px !important;
+        }
+
+        .smartlink {
+            display: block;
+            margin: 15px auto 0;
+            color: var(--neon-pink);
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--deep-space);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            background: var(--neon-pink);
+        }
+
+        footer {
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .tooltip {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--neon-blue);
+            color: var(--dark-space);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip.show {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <!-- Popup de espera con banner 250x300 -->
-    <div id="popup-overlay">
-        <div id="popup-content">
-            <h3>Por favor espere</h3>
-            <div class="ad-space banner-250x300">
-                <!-- Banner 250x300 -->
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : 'af959296cfa30fd80aa71c6af9a1e783',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/af959296cfa30fd80aa71c6af9a1e783/invoke.js"></script>
-            </div>
-            <div id="countdown">10</div>
-            <p>Redireccionando al contenido...</p>
-            <button id="close-popup" style="display: none;">Continuar</button>
+    <div class="container">
+        <h1>GENERADOR DE MENSAJES CIFRADOS</h1>
+        <p class="subtitle">¡30+ mensajes secretos esperando ser revelados! ✨</p>
+        
+        <input type="text" id="tuNombre" placeholder="Tu nombre">
+        <input type="text" id="suNombre" placeholder="Nombre de esa persona especial">
+        
+        <button onclick="generarMensaje()">DESCIFRAR MENSAJE</button>
+        
+        <div id="resultado">
+            <p>¡Tu mensaje aparecerá aquí! 🔮</p>
+            <div class="tooltip" id="tooltip">¡Copiado!</div>
         </div>
-    </div>
-    
-    <!-- Contenido principal -->
-    <div class="main-content">
-        <header>
-            <h1>Pruebas de Redes Publicitarias</h1>
-            <p class="description">Página de pruebas para comparar rendimiento de diferentes redes de anuncios</p>
-        </header>
-        
-        <!-- Barra social -->
-        <div class="social-bar">
-            <script type='text/javascript' src='//pl26365864.profitableratecpm.com/cd/dd/c5/cdddc503a42f900eb7d7275237e96cb4.js'></script>
+
+        <div class="social-share">
+            <a href="#" class="social-icon">📱</a>
+            <a href="#" class="social-icon">💬</a>
+            <a href="#" class="social-icon">📧</a>
         </div>
-        
-        <main>
-            <!-- Primer banner 728x90 -->
-            <div class="ad-container">
-                <div class="ad-space banner-728x90">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '5a6492804709f48b558f0da1d2a5bc0f',
-                            'format' : 'iframe',
-                            'height' : 90,
-                            'width' : 728,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//www.highperformanceformat.com/5a6492804709f48b558f0da1d2a5bc0f/invoke.js"></script>
-                </div>
-            </div>
-            
-            <!-- Grid de banners para desktop -->
-            <div class="ad-grid">
-                <!-- Primer banner 250x300 -->
-                <div class="ad-container">
-                    <div class="ad-space banner-250x300">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : 'af959296cfa30fd80aa71c6af9a1e783',
-                                'format' : 'iframe',
-                                'height' : 250,
-                                'width' : 300,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="//www.highperformanceformat.com/af959296cfa30fd80aa71c6af9a1e783/invoke.js"></script>
-                    </div>
-                </div>
-                
-                <!-- Segundo banner 250x300 -->
-                <div class="ad-container">
-                    <div class="ad-space banner-250x300">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : 'af959296cfa30fd80aa71c6af9a1e783',
-                                'format' : 'iframe',
-                                'height' : 250,
-                                'width' : 300,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="//www.highperformanceformat.com/af959296cfa30fd80aa71c6af9a1e783/invoke.js"></script>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Segundo banner 728x90 -->
-            <div class="ad-container">
-                <div class="ad-space banner-728x90">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '5a6492804709f48b558f0da1d2a5bc0f',
-                            'format' : 'iframe',
-                            'height' : 90,
-                            'width' : 728,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//www.highperformanceformat.com/5a6492804709f48b558f0da1d2a5bc0f/invoke.js"></script>
-                </div>
-            </div>
-        </main>
-        
+
         <footer>
-            <p>Página de pruebas - © 2023</p>
+            © 2023 Mensajes Cifrados | Diviértete responsablemente
         </footer>
     </div>
 
     <script>
-        // Contador regresivo
-        let seconds = 10;
-        const countdownElement = document.getElementById('countdown');
-        const popupOverlay = document.getElementById('popup-overlay');
-        const mainContent = document.querySelector('.main-content');
-        const closeButton = document.getElementById('close-popup');
-        
-        function updateCountdown() {
-            countdownElement.textContent = seconds;
-            seconds--;
-            
-            if (seconds < 0) {
-                popupOverlay.style.display = 'none';
-                mainContent.style.display = 'block';
-            } else {
-                setTimeout(updateCountdown, 1000);
-            }
-        }
-        
-        // Iniciar el contador cuando se carga la página
-        window.onload = function() {
-            updateCountdown();
-            
-            // Permitir cerrar manualmente después de 3 segundos
+        // 30+ Mensajes cifrados
+        const mensajes = [
+            "💖 {tuNombre}, {suNombre} piensa en ti un 85% más que los demás...",
+            "🔮 {suNombre} guarda un secreto sobre {tuNombre}. ¡Descúbrelo!",
+            "✨ ¡Compatibilidad del 92%! {tuNombre} y {suNombre} están destinados.",
+            "🌙 {tuNombre}, las estrellas dicen que {suNombre} te admira en secreto.",
+            "💔 {suNombre} borró un mensaje para {tuNombre} hace 3 días...",
+            "🔥 {tuNombre}, alguien cercano a {suNombre} habla de ti frecuentemente.",
+            "🎯 {suNombre} revisó las stories de {tuNombre} 7 veces hoy.",
+            "🔐 {tuNombre}, hay un 78% de probabilidad de que {suNombre} te extrañe.",
+            "👀 {suNombre} evita hablar de {tuNombre}... ¿por qué será?",
+            "💞 {tuNombre} + {suNombre} = 100% química según el universo.",
+            "📵 {suNombre} tiene una pantalla guardada con {tuNombre}.",
+            "🌌 El universo alinea a {suNombre} con {tuNombre} este mes.",
+            "💌 {suNombre} escribió y borró un mensaje para {tuNombre} anoche.",
+            "👻 {suNombre} busca excusas para hablar con {tuNombre}.",
+            "🎲 {tuNombre}, {suNombre} mencionó tu nombre mientras dormía.",
+            "🔮 {tuNombre}, la luna revela que {suNombre} te extraña.",
+            "💫 {suNombre} tiene un crush no confesado hacia {tuNombre}.",
+            "📱 {tuNombre}, {suNombre} revisa tu último acceso a WhatsApp.",
+            "💔 {suNombre} oculta sus verdaderos sentimientos por {tuNombre}.",
+            "✨ {tuNombre}, hay un 89% de probabilidad de que {suNombre} sueñe contigo.",
+            "🌠 {suNombre} guarda un objeto personal de {tuNombre}.",
+            "💞 {tuNombre} y {suNombre} tienen almas gemelas según el tarot.",
+            "🔎 {suNombre} investigó el perfil de {tuNombre} esta semana.",
+            "💘 {tuNombre}, {suNombre} tiene una playlist inspirada en ti.",
+            "🌙 {suNombre} ve a {tuNombre} de manera diferente desde hace un mes.",
+            "🎯 {tuNombre}, alguien oculta sus sentimientos por ti.",
+            "💭 {suNombre} piensa en {tuNombre} más de lo que admite.",
+            "🔮 {tuNombre}, revisa tus chats antiguos con {suNombre}.",
+            "💞 {suNombre} guarda fotos de {tuNombre} en su dispositivo.",
+            "✨ {tuNombre} y {suNombre} están conectados por un hilo invisible."
+        ];
+
+        function generarMensaje() {
+            const tuNombre = document.getElementById('tuNombre').value || 'Anónimo';
+            const suNombre = document.getElementById('suNombre').value || 'Anónimo';
+
+            // Animación de carga
+            document.getElementById('resultado').innerHTML = '<p>🔮 Descifrando...</p>';
+
+            // Delay para efecto dramático
             setTimeout(() => {
-                closeButton.style.display = 'block';
-            }, 3000);
-            
-            closeButton.addEventListener('click', function() {
-                popupOverlay.style.display = 'none';
-                mainContent.style.display = 'block';
+                const mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
+                const mensajeFinal = mensajeAleatorio
+                    .replace(/{tuNombre}/g, `<span style="color: var(--neon-pink)">${tuNombre}</span>`)
+                    .replace(/{suNombre}/g, `<span style="color: var(--neon-blue)">${suNombre}</span>`);
+                
+                // Smartlink de Monetag (DirectLink proporcionado)
+                const smartlink = '<a href="https://otieu.com/4/9347218" target="_blank" class="smartlink">✨ Descubre cómo descifrarlo por completo</a>';
+                
+                // Botón para copiar
+                const botonCopiar = '<button class="btn-copiar" onclick="copiarMensaje()">📋 Copiar Mensaje</button>';
+                
+                document.getElementById('resultado').innerHTML = `
+                    <div>${mensajeFinal}</div>
+                    ${botonCopiar}
+                    ${smartlink}
+                    <div class="tooltip" id="tooltip">¡Copiado!</div>
+                `;
+            }, 1500);
+        }
+
+        function copiarMensaje() {
+            const mensaje = document.getElementById('resultado').firstChild.textContent;
+            navigator.clipboard.writeText(mensaje)
+                .then(() => {
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.classList.add('show');
+                    setTimeout(() => tooltip.classList.remove('show'), 2000);
+                });
+        }
+
+        // Opcional: Compartir en redes
+        function compartirFacebook() {
+            FB.ui({
+                method: 'share',
+                href: window.location.href,
+                quote: '¡Acabo de generar un mensaje cifrado! ¿Qué dirá el tuyo? 🔐'
             });
-        };
+        }
     </script>
+
+    <!-- SDK Facebook (para compartir) -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v12.0"></script>
 </body>
     </html>
