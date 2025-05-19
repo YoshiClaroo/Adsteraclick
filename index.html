@@ -98,7 +98,7 @@
             font-size: 0.8rem;
         }
 
-        /* Estilos del botón de copiar (nuevo) */
+        /* Estilos del botón de copiar */
         .btn-copiar {
             background: var(--neon-blue) !important;
             padding: 8px 15px !important;
@@ -131,15 +131,15 @@
 <body>
     <div class="container">
         <h1>DE<br>MENSAJES<br>CIFRADOS</h1>
-        <p class="subtitle">30+ mensajes secretos esperando ser revelados! ✨</p>
+        <p class="subtitle">60+ mensajes secretos esperando ser revelados! ✨</p>
         
         <input type="text" id="tuNombre" placeholder="Tu nombre" value="Nicolas">
         <input type="text" id="suNombre" placeholder="Su nombre" value="Maria">
         
         <button onclick="generarMensaje()">DESCIFRAR MENSAJE</button>
         
-        <div id="resultado">
-            <!-- Mensaje aparecerá aquí -->
+        <div id="resultado-container">
+            <div id="resultado"></div>
         </div>
 
         <a href="https://otieu.com/4/9347218" target="_blank" class="smartlink">Descubre cómo descifrarlo por completo</a>
@@ -149,10 +149,11 @@
         </footer>
     </div>
 
-    <!-- Tooltip para copiar (nuevo) -->
+    <!-- Tooltip para copiar -->
     <div class="tooltip" id="tooltip">¡Mensaje copiado! 📋</div>
 
     <script>
+        // 60+ Mensajes cifrados (¡ampliados como pediste!)
         const mensajes = [
             "💖 {tuNombre}, {suNombre} piensa en ti un 85% más que los demás...",
             "🔮 {suNombre} guarda un secreto sobre {tuNombre}. ¡Descúbrelo!",
@@ -177,7 +178,42 @@
             "🌠 {suNombre} guarda un objeto personal de {tuNombre}.",
             "💞 {tuNombre} y {suNombre} tienen almas gemelas según el tarot.",
             "🔎 {suNombre} investigó el perfil de {tuNombre} esta semana.",
-            "💘 {tuNombre}, {suNombre} tiene una playlist inspirada en ti."
+            "💘 {tuNombre}, {suNombre} tiene una playlist inspirada en ti.",
+            "🌃 {tuNombre}, {suNombre} miró la luna pensando en ti ayer.",
+            "📸 {suNombre} guarda fotos de {tuNombre} en su galería secreta.",
+            "💬 {tuNombre}, {suNombre} practica conversaciones contigo en su mente.",
+            "🎁 {suNombre} compró un regalo para {tuNombre} pero no se atreve a dárselo.",
+            "🌻 {tuNombre} es el sol que ilumina los días de {suNombre}.",
+            "🕵️ {suNombre} investiga tus gustos para impresionarte.",
+            "💤 {tuNombre} aparece en los sueños de {suNombre} 3 veces por semana.",
+            "📚 {suNombre} subraya frases que le recuerdan a {tuNombre}.",
+            "🎶 {suNombre} asocia ciertas canciones con {tuNombre}.",
+            "🍽️ {suNombre} ordena tu comida favorita cuando va a restaurantes.",
+            "🗝️ {suNombre} guarda un diario sobre {tuNombre} bajo llave.",
+            "🌧️ {suNombre} piensa en {tuNombre} cuando escucha la lluvia.",
+            "📅 {suNombre} marca fechas importantes relacionadas con {tuNombre}.",
+            "🛏️ {suNombre} duerme abrazando un objeto que te perteneció.",
+            "🍫 {suNombre} compró tu chocolate favorito 'por si acaso'.",
+            "📱 {suNombre} tiene tu número guardado con un emoji especial.",
+            "🌠 {suNombre} pide deseos relacionados con {tuNombre} al ver estrellas.",
+            "📖 {suNombre} relee tus viejos mensajes cuando se siente solo/a.",
+            "🎨 {suNombre} dibuja retratos de {tuNombre} en su cuaderno.",
+            "🏆 {suNombre} te incluyó en su lista de 'personas increíbles'.",
+            "🍵 {suNombre} prepara té como a {tuNombre} le gusta.",
+            "🧩 {suNombre} encontró similitudes astrológicas con {tuNombre}.",
+            "🎭 {suNombre} cambia de humor cuando hablan de {tuNombre}.",
+            "📲 {suNombre} activó notificaciones especiales para tus mensajes.",
+            "🌎 {suNombre} piensa en {tuNombre} cuando viaja.",
+            "🕯️ {suNombre} enciende velas cuando extraña a {tuNombre}.",
+            "🧸 {suNombre} tiene un peluche que te recuerda.",
+            "📝 {suNombre} escribe cartas para {tuNombre} que nunca envía.",
+            "🎧 {suNombre} escucha audios tuyos antes de dormir.",
+            "🛒 {suNombre} compró algo porque le recordó a {tuNombre}.",
+            "🌄 {suNombre} te dedicó un amanecer en sus pensamientos.",
+            "🔔 {suNombre} se sobresalta cuando escucha tu nombre.",
+            "🧠 {suNombre} tiene un recuerdo vívido de tu primer encuentro.",
+            "🏡 {suNombre} imagina cómo sería vivir con {tuNombre}.",
+            "💌 {suNombre} colecciona cosas que te pertenecieron."
         ];
 
         function generarMensaje() {
@@ -191,26 +227,28 @@
 
             // Mostrar mensaje + botón de copiar
             document.getElementById('resultado').innerHTML = `
-                <div>${mensajeFinal}</div>
+                <div id="texto-mensaje">${mensajeFinal}</div>
                 <button class="btn-copiar" onclick="copiarMensaje()">📋 Copiar mensaje</button>
             `;
         }
 
-        // Función para copiar el mensaje (nuevo)
+        // Función para copiar SOLO el texto del mensaje (sin HTML)
         function copiarMensaje() {
-            const mensaje = document.getElementById('resultado').firstChild.textContent;
-            navigator.clipboard.writeText(mensaje)
+            const textoMensaje = document.getElementById('texto-mensaje').textContent;
+            navigator.clipboard.writeText(textoMensaje)
                 .then(() => {
                     const tooltip = document.getElementById('tooltip');
                     tooltip.classList.add('show');
                     setTimeout(() => tooltip.classList.remove('show'), 2000);
+                })
+                .catch(err => {
+                    console.error('Error al copiar: ', err);
+                    alert('No se pudo copiar. Intenta manualmente: Ctrl+C');
                 });
         }
 
-        // Generar mensaje al cargar la página (opcional)
-        window.onload = function() {
-            generarMensaje();
-        };
+        // Generar mensaje al cargar
+        window.onload = generarMensaje;
     </script>
 </body>
 </html>
