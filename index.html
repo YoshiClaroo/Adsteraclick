@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔮 Generador de Mensajes Secretos</title>
+    <title>Mensajes Secretos 🔐 | Descubre lo que piensan de ti</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Kanit:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -34,9 +34,10 @@
         h1 {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-blue);
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 5px;
-            letter-spacing: 2px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         .subtitle {
@@ -71,41 +72,80 @@
             margin: 15px 0;
             width: 80%;
             letter-spacing: 1px;
+            transition: all 0.3s;
         }
 
-        #resultado {
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--neon-purple);
+        }
+
+        #resultado-container {
             background: rgba(255, 255, 255, 0.05);
             border-left: 3px solid var(--neon-blue);
             padding: 15px;
             margin: 20px auto;
             border-radius: 5px;
-            font-size: 1.1rem;
             width: 80%;
             min-height: 80px;
         }
 
+        #texto-mensaje {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .btn-copiar {
+            background: var(--neon-blue) !important;
+            padding: 8px 15px !important;
+            font-size: 0.9rem !important;
+            margin: 10px auto !important;
+            width: auto !important;
+            display: block !important;
+        }
+
+        .smartlink-box {
+            background: rgba(5, 217, 232, 0.1);
+            border: 1px dashed var(--neon-blue);
+            border-radius: 5px;
+            padding: 12px;
+            margin: 20px auto;
+            width: 80%;
+        }
+
         .smartlink {
-            color: var(--neon-blue);
-            text-decoration: none;
+            color: var(--neon-pink);
             font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-compartir {
+            width: 120px !important;
+            padding: 10px !important;
+            font-size: 0.9rem !important;
+        }
+
+        .btn-facebook {
+            background: linear-gradient(45deg, #1877F2, #0A5FCC) !important;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E) !important;
         }
 
         footer {
             margin-top: 30px;
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.8rem;
-        }
-
-        /* Estilos del botón de copiar */
-        .btn-copiar {
-            background: var(--neon-blue) !important;
-            padding: 8px 15px !important;
-            font-size: 0.9rem !important;
-            margin-top: 10px !important;
-            width: auto !important;
-            display: inline-block !important;
         }
 
         .tooltip {
@@ -130,8 +170,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>DE<br>MENSAJES<br>CIFRADOS</h1>
-        <p class="subtitle">60+ mensajes secretos esperando ser revelados! ✨</p>
+        <h1>MENSAJES SECRETOS</h1>
+        <p class="subtitle">150+ mensajes cifrados esperando ser revelados ✨</p>
         
         <input type="text" id="tuNombre" placeholder="Tu nombre" value="Nicolas">
         <input type="text" id="suNombre" placeholder="Su nombre" value="Maria">
@@ -139,13 +179,23 @@
         <button onclick="generarMensaje()">DESCIFRAR MENSAJE</button>
         
         <div id="resultado-container">
-            <div id="resultado"></div>
+            <div id="texto-mensaje"></div>
+            <button class="btn-copiar" onclick="copiarMensaje()">📋 Copiar mensaje</button>
         </div>
 
-        <a href="https://otieu.com/4/9347218" target="_blank" class="smartlink">Descubre cómo descifrarlo por completo</a>
+        <!-- Smartlink estratégico -->
+        <div class="smartlink-box">
+            <a href="https://otieu.com/4/9347218" target="_blank" class="smartlink">🚀 ¿Quieres saber MÁS secretos? ¡Haz clic aquí!</a>
+        </div>
+
+        <!-- Botones de compartir -->
+        <div class="share-buttons">
+            <button class="btn-compartir btn-facebook" onclick="compartirFacebook()">Facebook</button>
+            <button class="btn-compartir btn-whatsapp" onclick="compartirWhatsApp()">WhatsApp</button>
+        </div>
 
         <footer>
-            © 2025 Mensajes Cifrados | Diviértete responsablemente
+            © 2025 Mensajes Secretos | Diviértete responsablemente
         </footer>
     </div>
 
@@ -153,7 +203,7 @@
     <div class="tooltip" id="tooltip">¡Mensaje copiado! 📋</div>
 
     <script>
-        // 60+ Mensajes cifrados (¡ampliados como pediste!)
+        // 150+ Mensajes cifrados (¡ampliados como pediste!)
         const mensajes = [
             "💖 {tuNombre}, {suNombre} piensa en ti un 85% más que los demás...",
             "🔮 {suNombre} guarda un secreto sobre {tuNombre}. ¡Descúbrelo!",
@@ -213,7 +263,102 @@
             "🔔 {suNombre} se sobresalta cuando escucha tu nombre.",
             "🧠 {suNombre} tiene un recuerdo vívido de tu primer encuentro.",
             "🏡 {suNombre} imagina cómo sería vivir con {tuNombre}.",
-            "💌 {suNombre} colecciona cosas que te pertenecieron."
+            "💌 {suNombre} colecciona cosas que te pertenecieron.",
+            "🎤 {suNombre} canta canciones que le recuerdan a {tuNombre}.",
+            "🏖️ {suNombre} planea un viaje imaginario contigo.",
+            "📊 {suNombre} hizo una lista de pros y contras sobre {tuNombre}.",
+            "🌐 {suNombre} sigue tus redes sociales desde una cuenta secreta.",
+            "🎮 {suNombre} eligió un personaje que se parece a {tuNombre} en su juego favorito.",
+            "🍎 {suNombre} lleva tu fruta favorita en su mochila.",
+            "📿 {suNombre} tiene un amuleto que le recuerda a {tuNombre}.",
+            "🏅 {suNombre} te dio mentalmente un premio por 'Mejor Sonrisa'.",
+            "🌺 {suNombre} cultiva flores que asoció con {tuNombre}.",
+            "🎭 {suNombre} imita tu risa cuando está solo/a.",
+            "📻 {suNombre} sintoniza la emisora que una vez mencionaste.",
+            "🧵 {suNombre} guarda un botón que se cayó de tu ropa.",
+            "🏕️ {suNombre} acampó donde sabía que {tuNombre} iría.",
+            "🎟️ {suNombre} compró entradas para un evento que te gusta.",
+            "🍯 {suNombre} endulza su té como a {tuNombre} le gusta.",
+            "🧦 {suNombre} tiene un par de calcetines iguales a los tuyos.",
+            "🎹 {suNombre} toca una canción que escribió para {tuNombre}.",
+            "🛌 {suNombre} duerme del lado de la cama que prefieres.",
+            "📸 {suNombre} tomó una foto tuya sin que lo notaras.",
+            "🎨 {suNombre} mezcló un color y lo llamó '{tuNombre}'.",
+            "🍽️ {suNombre} pidió tu plato favorito 'para probar'.",
+            "📚 {suNombre} compró el libro que mencionaste hace meses.",
+            "🎧 {suNombre} escucha podcasts que sabe que te gustan.",
+            "🌆 {suNombre} visita lugares donde coincidieron contigo.",
+            "🛍️ {suNombre} compró ropa similar a la tuya.",
+            "🍩 {suNombre} sabe exactamente cómo te gusta el café.",
+            "🎪 {suNombre} fue al circo porque sabía que irías.",
+            "📝 {suNombre} anotó tus frases graciosas en un cuaderno.",
+            "🏋️ {suNombre} va al gimnasio a la misma hora que tú.",
+            "🎲 {suNombre} guarda el dado que usaron juntos.",
+            "🍕 {suNombre} ordena pizza con tus ingredientes favoritos.",
+            "📺 {suNombre} ve series que sabe que te gustan.",
+            "🎁 {suNombre} guarda todos los regalos que le diste.",
+            "📱 {suNombre} tiene tu foto de perfil guardada.",
+            "🌳 {suNombre} plantó un árbol en honor a {tuNombre}.",
+            "🎤 {suNombre} karaokea canciones que te gustan.",
+            "🏄 {suNombre} tomó clases de surf porque a ti te encanta.",
+            "📖 {suNombre} relee mensajes antiguos tuyos.",
+            "🎭 {suNombre] memorizó tus gestos característicos.",
+            "🍣 {suNombre} aprendió a hacer sushi porque es tu favorito.",
+            "📊 {suNombre} hizo un gráfico de tus hábitos diarios.",
+            "🎮 {suNombre} juega online solo cuando sabe que estás conectado/a.",
+            "🌌 {suNombre} nombró una estrella con tu nombre.",
+            "🍰 {suNombre} horneó un pastel con tus iniciales.",
+            "📅 {suNombre} sincronizó su calendario con tus eventos.",
+            "🎧 {suNombre} tiene auriculares idénticos a los tuyos.",
+            "🏆 {suNombre} te otorgó un trofeo imaginario.",
+            "🌠 {suNombre} conoce tu signo lunar y lo estudió.",
+            "📸 {suNombre} recreó fotos antiguas tuyas.",
+            "🎨 {suNombre} pintó un mural inspirado en ti.",
+            "🍵 {suNombre] prepara té a tu hora favorita.",
+            "📚 {suNombre} colecciona ediciones especiales de tus libros favoritos.",
+            "🎶 {suNombre} creó una banda sonora para {tuNombre}.",
+            "🏡 {suNombre} decoró su casa con elementos que te gustan.",
+            "🌍 {suNombre} aprendió tu idioma favorito.",
+            "🎭 {suNombre] practica tu firma por diversión.",
+            "📱 {suNombre} tiene un tema de pantalla que combina con el tuyo.",
+            "🍫 {suNombre} lleva siempre tu chocolate favorito.",
+            "🎤 {suNombre} grabó un mensaje de voz imitándote.",
+            "🏖️ {suNombre} colecciona arena de playas que visitaste.",
+            "📝 {suNombre} escribe poemas sobre {tuNombre}.",
+            "🎮 {suNombre} diseñó un juego basado en tu personalidad.",
+            "🌌 {suNombre} cree que sois almas viejas que se reencuentran.",
+            "🍽️ {suNombre] colecciona menús de restaurantes que frecuentas.",
+            "📚 {suNombre} subrayó todos los libros que prestaste.",
+            "🎧 {suNombre} sincroniza sus listas de música con las tuyas.",
+            "🏆 {suNombre} te imagina ganando un Nobel.",
+            "🌠 {suNombre} conoce tu constelación zodiacal.",
+            "📸 {suNombre} hizo un álbum secreto de tus fotos públicas.",
+            "🎨 {suNombre} esculpió una figura inspirada en ti.",
+            "🍵 {suNombre] tiene una taza idéntica a la tuya.",
+            "📚 {suNombre} memorizó tus citas literarias favoritas.",
+            "🎶 {suNombre} silba siempre tu canción preferida.",
+            "🏡 {suNombre} imagina cómo decoraríais una casa juntos.",
+            "🌍 {suNombre} aprendió a cocinar tus platos típicos.",
+            "🎭 {suNombre] practica tu risa frente al espejo.",
+            "📱 {suNombre} configuró alertas para tus publicaciones.",
+            "🍫 {suNombre} tiene un mapa de tus lugares de chocolate favoritos.",
+            "🎤 {suNombre} canta canciones cambiando la letra por tu nombre.",
+            "🏖️ {suNombre} guarda conchas que coinciden con las que coleccionas.",
+            "📝 {suNombre} inventó un idioma secreto para {tuNombre}.",
+            "🎮 {suNombre} programó un bot que imita tu forma de escribir.",
+            "🌌 {suNombre} cree que sois estrellas gemelas.",
+            "🍽️ {suNombre] reproduce tus recetas de cocina exactas.",
+            "📚 {suNombre} duplicó tu biblioteca personal.",
+            "🎧 {suNombre} mezcló canciones con samples de tu voz.",
+            "🏆 {suNombre} te imagina ganando un Óscar.",
+            "🌠 {suNombre} estudió astronomía para encontrar tu estrella.",
+            "📸 {suNombre} hizo un time-lapse de tus fotos de perfil antiguas.",
+            "🎨 {suNombre} creó un código de colores basado en tu ropa.",
+            "🍵 {suNombre] registra tus horarios de café para coincidir virtualmente.",
+            "📚 {suNombre} escribió un fanfiction sobre vosotros.",
+            "🎶 {suNombre} tiene una lista llamada 'La banda sonora de {tuNombre}'.",
+            "🏡 {suNombre} dibujó planos de vuestra casa ideal.",
+            "🌍 {suNombre} aprendió todos tus datos curiosos favoritos."
         ];
 
         function generarMensaje() {
@@ -225,30 +370,37 @@
                 .replace(/{tuNombre}/g, tuNombre)
                 .replace(/{suNombre}/g, suNombre);
 
-            // Mostrar mensaje + botón de copiar
-            document.getElementById('resultado').innerHTML = `
-                <div id="texto-mensaje">${mensajeFinal}</div>
-                <button class="btn-copiar" onclick="copiarMensaje()">📋 Copiar mensaje</button>
-            `;
+            document.getElementById('texto-mensaje').textContent = mensajeFinal;
         }
 
-        // Función para copiar SOLO el texto del mensaje (sin HTML)
         function copiarMensaje() {
-            const textoMensaje = document.getElementById('texto-mensaje').textContent;
-            navigator.clipboard.writeText(textoMensaje)
+            const texto = document.getElementById('texto-mensaje').textContent;
+            navigator.clipboard.writeText(texto)
                 .then(() => {
                     const tooltip = document.getElementById('tooltip');
                     tooltip.classList.add('show');
                     setTimeout(() => tooltip.classList.remove('show'), 2000);
-                })
-                .catch(err => {
-                    console.error('Error al copiar: ', err);
-                    alert('No se pudo copiar. Intenta manualmente: Ctrl+C');
                 });
         }
 
+        function compartirFacebook() {
+            const mensaje = document.getElementById('texto-mensaje').textContent;
+            const url = encodeURIComponent(window.location.href);
+            const texto = encodeURIComponent(`${mensaje}\n\n✨ Descubre tus mensajes secretos aquí:`);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${texto}`, '_blank');
+        }
+
+        function compartirWhatsApp() {
+            const mensaje = document.getElementById('texto-mensaje').textContent;
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://wa.me/?text=${encodeURIComponent(`${mensaje}\n\n🔮 Genera tu mensaje aquí: ${url}`)}`, '_blank');
+        }
+
         // Generar mensaje al cargar
-        window.onload = generarMensaje;
+        window.onload = generarMensero;
     </script>
+
+    <!-- SDK Facebook -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v12.0"></script>
 </body>
 </html>
