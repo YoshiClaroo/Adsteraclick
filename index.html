@@ -97,6 +97,35 @@
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.8rem;
         }
+
+        /* Estilos del botón de copiar (nuevo) */
+        .btn-copiar {
+            background: var(--neon-blue) !important;
+            padding: 8px 15px !important;
+            font-size: 0.9rem !important;
+            margin-top: 10px !important;
+            width: auto !important;
+            display: inline-block !important;
+        }
+
+        .tooltip {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--neon-blue);
+            color: var(--dark-space);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 100;
+        }
+
+        .tooltip.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -119,6 +148,9 @@
             © 2025 Mensajes Cifrados | Diviértete responsablemente
         </footer>
     </div>
+
+    <!-- Tooltip para copiar (nuevo) -->
+    <div class="tooltip" id="tooltip">¡Mensaje copiado! 📋</div>
 
     <script>
         const mensajes = [
@@ -157,7 +189,22 @@
                 .replace(/{tuNombre}/g, tuNombre)
                 .replace(/{suNombre}/g, suNombre);
 
-            document.getElementById('resultado').innerHTML = mensajeFinal;
+            // Mostrar mensaje + botón de copiar
+            document.getElementById('resultado').innerHTML = `
+                <div>${mensajeFinal}</div>
+                <button class="btn-copiar" onclick="copiarMensaje()">📋 Copiar mensaje</button>
+            `;
+        }
+
+        // Función para copiar el mensaje (nuevo)
+        function copiarMensaje() {
+            const mensaje = document.getElementById('resultado').firstChild.textContent;
+            navigator.clipboard.writeText(mensaje)
+                .then(() => {
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.classList.add('show');
+                    setTimeout(() => tooltip.classList.remove('show'), 2000);
+                });
         }
 
         // Generar mensaje al cargar la página (opcional)
